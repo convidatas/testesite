@@ -1,17 +1,298 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ConvitesVIP</title>
+    <title>ConvitesVIP - Convites Digitais Interativos</title>
+    <meta name="description" content="Convites digitais interativos únicos para aniversários, casamentos, 15 anos e mais. Modelos prontos ou totalmente personalizados.">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-  </head>
-  <body class="bg-gradient-to-br from-pink-100 to-yellow-100 text-gray-800 font-sans">
-    <main class="min-h-screen flex flex-col items-center justify-center text-center p-4">
-      <h1 class="text-5xl font-bold mb-4">🎉 ConvitesVIP</h1>
-      <p class="text-lg mb-6">Convites digitais personalizados para todas as ocasiões.</p>
-      <a href="https://wa.me/5588999999999" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full shadow-lg transition-all duration-300">Fale com a gente no WhatsApp</a>
-    </main>
+</head>
+<body class="font-sans antialiased bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 gradient-primary rounded-full flex items-center justify-center">
+                        <i class="fas fa-envelope text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-900">ConvitesVIP</h1>
+                        <p class="text-xs text-gray-600">Digitais & Interativos</p>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-6">
+                    <button onclick="scrollToSection('catalog')" class="text-gray-700 hover:text-purple-600 transition-colors">
+                        Catálogo
+                    </button>
+                    <button onclick="scrollToSection('custom')" class="text-gray-700 hover:text-purple-600 transition-colors">
+                        Personalizados
+                    </button>
+                    <button onclick="scrollToSection('gallery')" class="text-gray-700 hover:text-purple-600 transition-colors">
+                        Galeria
+                    </button>
+                    <button onclick="scrollToSection('contact')" class="text-gray-700 hover:text-purple-600 transition-colors">
+                        Contato
+                    </button>
+                </div>
+
+                <div class="flex items-center space-x-3">
+                    <button onclick="openWhatsApp()" class="bg-green-500 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-green-600 transition-colors">
+                        <i class="fab fa-whatsapp mr-2"></i>
+                        WhatsApp
+                    </button>
+                    <button class="md:hidden text-gray-700" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-primary py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-6xl font-bold text-white mb-6">
+                Convites Digitais
+                <span class="block text-yellow-300">Que Encantam</span>
+            </h2>
+            <p class="text-xl text-purple-100 mb-8 max-w-2xl mx-auto">
+                Transforme suas celebrações com convites digitais interativos únicos. 
+                Modelos prontos ou totalmente personalizados para sua festa especial.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="scrollToSection('catalog')" class="bg-white text-purple-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-colors">
+                    <i class="fas fa-store mr-2"></i>
+                    Ver Catálogo
+                </button>
+                <button onclick="scrollToSection('custom')" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-purple-600 transition-colors">
+                    <i class="fas fa-magic mr-2"></i>
+                    Personalizar do Zero
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-gray-900 mb-4">Nossas Categorias</h3>
+                <p class="text-gray-600 text-lg">Encontre o convite perfeito para cada ocasião especial</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-6" id="categories-grid">
+                <!-- Categories will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalog Section -->
+    <section id="catalog" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-gray-900 mb-4">Catálogo de Convites</h3>
+                <p class="text-gray-600 text-lg">Modelos prontos para personalização rápida</p>
+            </div>
+
+            <!-- Filter Bar -->
+            <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+                <div class="flex flex-wrap gap-3" id="filter-buttons">
+                    <!-- Filter buttons will be loaded here by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="products-grid">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center mt-12">
+                <button class="bg-purple-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-purple-700 transition-colors">
+                    Carregar Mais Modelos
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Design Section -->
+    <section id="custom" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="gradient-primary rounded-3xl p-8 md:p-12 text-white">
+                <div class="max-w-4xl mx-auto text-center">
+                    <div class="text-6xl mb-6">✨</div>
+                    <h3 class="text-3xl md:text-4xl font-bold mb-6">Convites Personalizados do Zero</h3>
+                    <p class="text-xl text-purple-100 mb-8">
+                        Quer algo totalmente único? Criamos seu convite digital interativo do zero, 
+                        com design exclusivo e funcionalidades especiais sob medida para sua festa.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-white bg-opacity-10 rounded-2xl p-6">
+                            <i class="fas fa-palette text-5xl mb-3"></i>
+                            <h4 class="font-semibold mb-2">Design Exclusivo</h4>
+                            <p class="text-purple-100 text-sm">Criado especialmente para você com suas cores, temas e preferências</p>
+                        </div>
+                        <div class="bg-white bg-opacity-10 rounded-2xl p-6">
+                            <i class="fas fa-bolt text-5xl mb-3"></i>
+                            <h4 class="font-semibold mb-2">Interatividade Avançada</h4>
+                            <p class="text-purple-100 text-sm">Animações, sons, jogos e recursos especiais personalizados</p>
+                        </div>
+                        <div class="bg-white bg-opacity-10 rounded-2xl p-6">
+                            <i class="fas fa-bullseye text-5xl mb-3"></i>
+                            <h4 class="font-semibold mb-2">Consultoria Incluída</h4>
+                            <p class="text-purple-100 text-sm">Acompanhamento completo desde a ideia até a entrega final</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white bg-opacity-20 rounded-2xl p-6 mb-8">
+                        <h4 class="text-2xl font-bold mb-4">Preços dos Personalizados</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                            <div>
+                                <div class="text-2xl font-bold">R$ 120</div>
+                                <div class="text-purple-100">Aniversários Infantis</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold">R$ 150</div>
+                                <div class="text-purple-100">15 Anos & Chá de Panela</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold">R$ 200</div>
+                                <div class="text-purple-100">Casamentos & Save the Date</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="openCustomWhatsApp()" class="bg-white text-purple-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-colors">
+                        <i class="fab fa-whatsapp mr-2"></i>
+                        Solicitar Orçamento Personalizado
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-gray-900 mb-4">Galeria de Trabalhos</h3>
+                <p class="text-gray-600 text-lg">Veja alguns dos nossos convites digitais já entregues</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <img src="https://images.unsplash.com/photo-1621111848501-8d3634f82336?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=400" 
+                     alt="Exemplo de convite digital moderno" 
+                     class="rounded-xl shadow-lg hover:scale-105 transition-transform cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=400" 
+                     alt="Convite digital elegante para casamento" 
+                     class="rounded-xl shadow-lg hover:scale-105 transition-transform cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=400" 
+                     alt="Convite digital para festa infantil" 
+                     class="rounded-xl shadow-lg hover:scale-105 transition-transform cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=400" 
+                     alt="Convite digital para quinceañera" 
+                     class="rounded-xl shadow-lg hover:scale-105 transition-transform cursor-pointer">
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="py-16 gradient-secondary">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-3xl md:text-4xl font-bold text-white mb-6">
+                Pronto para Criar Seu Convite Digital?
+            </h3>
+            <p class="text-xl text-orange-100 mb-8 max-w-2xl mx-auto">
+                Entre em contato conosco agora mesmo e vamos tornar sua festa inesquecível!
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="openWhatsApp()" class="bg-green-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-green-600 transition-colors">
+                    <i class="fab fa-whatsapp mr-2"></i>
+                    Falar no WhatsApp
+                </button>
+                <button onclick="sendEmail()" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-orange-500 transition-colors">
+                    <i class="fas fa-envelope mr-2"></i>
+                    Enviar E-mail
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 gradient-primary rounded-full flex items-center justify-center">
+                            <i class="fas fa-envelope text-white text-sm"></i>
+                        </div>
+                        <h4 class="text-xl font-bold">ConvitesVIP</h4>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Convites digitais interativos que transformam suas celebrações em momentos únicos e inesquecíveis.
+                    </p>
+                    <div class="flex space-x-3">
+                        <i class="fab fa-instagram text-2xl text-gray-400 hover:text-pink-500 cursor-pointer transition-colors"></i>
+                        <i class="fab fa-whatsapp text-2xl text-gray-400 hover:text-green-500 cursor-pointer transition-colors"></i>
+                        <i class="fab fa-facebook text-2xl text-gray-400 hover:text-blue-500 cursor-pointer transition-colors"></i>
+                    </div>
+                </div>
+                
+                <div>
+                    <h5 class="font-semibold mb-4">Categorias</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Aniversários Infantis</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">15 Anos</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Casamentos</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Save the Date</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Chá de Panela</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5 class="font-semibold mb-4">Serviços</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Modelos Prontos</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Personalizados</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Consultoria</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Suporte</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5 class="font-semibold mb-4">Contato</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center">
+                            <i class="fab fa-whatsapp mr-2"></i>
+                            (11) 99999-9999
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            contato@convitesvip.com
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock mr-2"></i>
+                            Seg à Sex, 9h às 18h
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr class="border-gray-700 my-8">
+            <div class="text-center text-gray-400">
+                <p>&copy; 2024 ConvitesVIP. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button onclick="openWhatsApp()" class="bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:bg-green-600 transition-colors animate-pulse">
+            <i class="fab fa-whatsapp text-3xl"></i>
+        </button>
+    </div>
+
     <script src="script.js"></script>
-  </body>
+</body>
 </html>
